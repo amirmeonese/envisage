@@ -286,7 +286,7 @@
                             <a href="upload.php"><i class="fa fa-edit fa-fw"></i> Upload File</a>
                         </li>
 						<li>
-                            <a href="view.php"><i class="fa fa-table fa-fw"></i> View File</a>
+                            <a href="view.php"><i class="fa fa-table fa-fw"></i> View Database</a>
                         </li>
                          <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
