@@ -1,0 +1,649 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Timeline Graph</title>
+
+
+        <!-- 1. Add these JavaScript inclusions in the head of your page -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <link rel="stylesheet" href="themes/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="themes/css/style.css" type="text/css" media="screen" charset="utf-8" />
+		<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet">
+		
+        <!-- 2. Add the JavaScript to initialize the chart on document ready -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                $('#container').highcharts({
+                    series: [{
+                            id: "default",
+                            name: "Company",
+                            data: []
+                    }],
+					colors: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+					"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+					title: {
+						text: 'Company KPI Comparison'
+					},				
+					yAxis: {
+						title: {
+							text: 'Select KPI'
+						}
+					},
+					tooltip: {
+						valueSuffix: 'KM'
+					},
+					plotOptions: {
+						column: {
+							pointPadding: 0.2,
+							borderWidth: 0
+						}
+					},					
+					credits: {
+					  enabled: false
+					}	
+                });
+				
+			 });	
+
+
+			function setChart() {
+
+                    
+                    var chart = $('#container').highcharts();
+                    var title = $('#combo').val();
+                    
+                    var list = $('#main_list').val();
+                    var start = $('#xstart').val();
+                    var end = $('#xend').val();
+                                        
+                    if (title == "net_income") {
+
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+
+                                $(document).ready(function() {
+                                    if (list == "Quarter") {
+                                        var kpi = "getChartData.php?modeID=quarter";
+                                    } else if (list == "Year"){
+                                        var kpi = "timeline_json/timeline_plot_Year.json";
+                                    }
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
+
+                                });
+
+								chart.yAxis[0].setTitle({text: 'Net Income'});
+								
+
+                    } 
+                    
+                    if (title == "accounts_payable") {
+
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+
+                                $(document).ready(function() {
+                                    if (list == "Quarter") {
+                                        var kpi = "getChartData.php?modeID=quarter";
+                                    } else if (list == "Year"){
+                                        var kpi = "timeline_json/timeline_plot_Year.json";
+                                    }
+                                    
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
+
+                                });
+
+								chart.yAxis[0].setTitle({text: 'Accounts Payable'});
+								
+
+                    } 
+                    
+                    if (title == "gross_margin") {
+
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+
+                                $(document).ready(function() {
+                                    if (list == "Quarter") {
+                                        var kpi = "getChartData.php?modeID=quarter";
+                                    } else if (list == "Year"){
+                                        var kpi = "timeline_json/timeline_plot_Year.json";
+                                    }
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
+
+                                });
+
+								chart.yAxis[0].setTitle({text: 'Gross Margin'});
+								
+
+                    } 
+                    
+                    if (title == "net_sales") {
+
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+
+                                $(document).ready(function() {
+                                    if (list == "Quarter") {
+                                        var kpi = "getChartData.php?modeID=quarter";
+                                    } else if (list == "Year"){
+                                        var kpi = "timeline_json/timeline_plot_Year.json";
+                                    }
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
+
+                                });
+
+								chart.yAxis[0].setTitle({text: 'Net Income'});
+								
+
+                    } 
+                    
+                    if (title == "net_sales") {
+
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+
+                                $(document).ready(function() {
+                                    if (list == "Quarter") {
+                                        var kpi = "getChartData.php?modeID=quarter";
+                                    } else if (list == "Year"){
+                                        var kpi = "timeline_json/timeline_plot_Year.json";
+                                    }
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
+
+                                });
+
+								chart.yAxis[0].setTitle({text: 'Net Sales'});
+								
+
+                    } 
+                    
+                    
+                    
+            }; // setChart
+
+			function addCompany() {
+			
+				var chart = $('#container').highcharts(),
+                                   series_samsung = chart.get('samsung'),
+                                   series_apple = chart.get('apple'),
+                                   series_sony = chart.get('Sony'),
+                                   series_htc = chart.get('HTC');
+                           
+                           if(series_samsung === null){
+                               var selected_samsung = "samsung";
+                           } else {
+                              var selected_samsung = series_samsung.name;
+                           }
+                           
+                           if(series_apple === null){
+                               var selected_apple = "apple";
+                           } else {
+                              var selected_apple= series_apple.name;
+                           }
+                           
+                           if(series_htc === null){
+                               var selected_htc = "HTC";
+                           } else {
+                              var selected_htc = series_htc.name;
+                           }
+                           
+                           if(series_sony === null){
+                               var selected_sony = "sony";
+                           } else {
+                              var selected_sony = series_sony.name;
+                           }
+                                                      
+                                   
+                                
+				var vals = [];
+                                var textvals = [];
+				
+				var list = $('#main_list').val();
+                                var title = $('#combo option:selected').val();
+				var start = $('#xstart').val();
+				var end = $('#xend').val();
+				var start_title = $('#xstart option:selected').text();
+                                var end_title = $('#xend option:selected').text();
+			
+				$('.companyList').each(function(i, selected) {
+				vals[i] = $(selected).val();
+				textvals[i] = $(selected).text();
+                                                               
+
+					if (vals[i] == "samsung" && vals[i] == selected_samsung) {
+						$(document).ready(function() {
+							if (list == "Quarter") {
+                                        var samsung = "getChartData.php?modeID="+title;
+                                        
+                                    } else if (list == "year"){
+                                        var samsung = "timeline_json/accounts_payable/timeline_plot_sony.json";
+                                    }
+                                    
+                                    
+                                                                                
+                                        
+                                        
+							$.getJSON(samsung, function(data) {
+								var list = [];
+								//var endx = ++end;
+                                                                
+								for (var i in data)
+								{
+								
+								   var value = data[i].data;
+                                                                   
+								   var list =  value.slice( start, end);
+								   
+								   } 
+//                                                                   
+								chart.addSeries({id: 'samsung', name: "Samsung Inc", data: list, type: "line"}); 
+							});
+
+						});
+					}
+
+					if (vals[i] == "apple" && vals[i] == selected_apple) {
+						$(document).ready(function() {
+							
+					if (list == "Quarter") {
+                                        var apple = "getChartData.php?modeID="+title;
+                                    } else if (list == "year"){
+                                        var apple = "timeline_json/accounts_payable/timeline_plot_sony.json";
+                                    }
+							$.getJSON(apple, function(data) {
+								var list = [];
+								//var endx = ++end;
+																				
+								for (var i in data)
+								{
+								
+								
+								   var value = data[i].data;
+								   var list =  value.slice( start, end);
+								   
+								   } 
+								chart.addSeries({id: 'apple', name: "Apple Inc", data: list, type: "line"}); 
+							});
+
+						});
+					}
+
+					if (vals[i] == "HTC" && vals[i] == selected_htc) {
+						$(document).ready(function() {
+							
+							if (list == "Quarter") {
+                                        var htc = "getChartData.php?modeID="+title;
+                                    } else if (list == "year"){
+                                        var htc = "timeline_json/accounts_payable/timeline_plot_sony.json";
+                                    }
+							$.getJSON(htc, function(data) {
+								var list = [];
+								//var endx = ++end;
+																				
+								for (var i in data)
+								{
+								
+								
+								   var value = data[i].data;
+								   var list =  value.slice( start, end);
+								   
+								   } 
+								chart.addSeries({id: 'HTC', name: "HTC Corp", data: list, type: "line"}); 
+							});
+
+						});
+					}
+
+					if (vals[i] == "sony" && vals[i] == selected_sony) {
+						$(document).ready(function() {
+							
+						if (list == "Quarter") {
+                                        var sony = "getChartData.php?modeID="+title;
+                                    } else if (list == "year"){
+                                        var sony = "timeline_json/accounts_payable/timeline_plot_sony.json";
+                                    }
+							$.getJSON(sony, function(data) {
+								var list = [];
+								//var endx = ++end;
+																				
+								for (var i in data)
+								{
+								
+								
+								   var value = data[i].data;
+								   var list =  value.slice( start, end);
+								   
+								   } 
+								chart.addSeries({id: 'Sony', name: "Sony Corp", data: list, type: "line"}); 
+							});
+
+						});
+					}
+					
+					chart.setTitle({text: title + " by " + list + " " + start_title + "-" + end_title});
+					
+				 });	
+                                                                     
+            };
+			
+			function removeCompany() {
+			
+				var chart = $('#container').highcharts();
+				var vals = [];
+                var textvals = [];
+				
+				var list = $('#main_list').val();
+				var start = $('#xstart').val();
+				var end = $('#xend').val();
+				var seriesLength = chart.series.length;
+			
+				$('.company_remove').each(function(i, selected) {
+				vals[i] = $(selected).val();
+				textvals[i] = $(selected).text();
+
+					if (vals[i] == "samsung") {
+						$(document).ready(function() {
+							
+							for(var i = seriesLength - 1; i > -1; i--) {
+								if(chart.series[i].name.toLowerCase() == 'samsung inc') {
+									chart.series[i].remove(true);
+								}
+							}
+							
+						});
+					}
+
+					if (vals[i] == "apple") {
+						$(document).ready(function() {
+							
+								for(var i = seriesLength - 1; i > -1; i--) {
+								if(chart.series[i].name.toLowerCase() == 'apple inc') {
+									chart.series[i].remove(true);
+								}
+							}
+								
+							});
+
+						
+					}
+
+					if (vals[i] == "HTC") {
+						$(document).ready(function() {
+							
+								for(var i = seriesLength - 1; i > -1; i--) {
+								if(chart.series[i].name.toLowerCase() == 'htc corp') {
+									chart.series[i].remove(true);
+								}
+							}
+						
+						});
+					}
+
+					if (vals[i] == "sony") {
+						$(document).ready(function() {
+						
+								for(var i = seriesLength - 1; i > -1; i--) {
+								if(chart.series[i].name.toLowerCase() == 'sony corp') {
+									chart.series[i].remove(true);
+								}
+							} 
+						
+						});
+					}
+					
+				 });	
+				
+                                    
+            };
+
+            $(function() {
+                var sel, i,
+                        Year = ['2009','2010','2011', '2012', '2013', '2014'],
+                        start = ['0', '1', '2', '3','4','5'],
+                        end = ['1', '2', '3', '4','5','6'],
+                        Quarter = ['Q1 2011', 'Q2 2011', 'Q3 2011', 'Q4 2011', 'Q1 2012', 'Q2 2012'],
+                        dev_default = '<option value="default" selected>Select</option>';
+
+                sel_brand = $('#xstart');
+                sel_version = $('#xend');
+                
+                
+                $('select').change(function() {
+                    switch (this.id) {
+                        case 'main_list':
+                            $('.secondary').hide();
+                            sel_brand.find('option').remove();
+                            sel_brand.append(dev_default);
+                            sel_brand.show();
+                            $('.firstly').hide();
+                            sel_version.find('option').remove();
+                            sel_version.append(dev_default);
+                            sel_version.show();
+                            if (this.value == 'Year') {
+                                for (i = 0; i < Year.length; i++) {
+                                    $("#xstart").append(
+                                            '<option value="' + start[i] + '">' + Year[i] + '</option>'
+                                            ),
+                                            $("#xend").append(
+                                            '<option value="' + end[i] + '">' + Year[i] + '</option>'
+                                            );
+                                }
+                            } else if (this.value == 'Quarter') {
+                                for (i = 0; i < Quarter.length; i++) {
+                                    $("#xstart").append(
+                                            '<option value="' + start[i] + '">' + Quarter[i] + '</option>'
+                                            ),
+                                            $("#xend").append(
+                                            '<option value="' + end[i] + '">' + Quarter[i] + '</option>'
+                                            );
+                                }
+                            }
+                            break;
+
+                    }
+                });
+
+			}); 
+			
+			
+			/*function addCompany() {
+				var max_fields      = 5; //maximum input boxes allowed
+				var wrapper         = $(".company_list"); //Fields wrapper
+				var add_button      = $(".add_field_button"); //Add button ID
+				
+				var x = 1; //initlal text box count
+				$(add_button).ready(function(){ //on add input button click
+					//e.preventDefault();
+					if(x < max_fields){ //max input box allowed
+						x++; //text box increment
+						$(wrapper).append('<span><select id="company" class="company" name="company[]" onchange="setChart()"><option value="apple">Apple Inc</option><option value="samsung">Samsung Inc</option><option value="HTC">HTC</option><option value="sony">Sony</option> </select></span>');
+					}
+				});
+				
+				$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+					e.preventDefault(); $(this).parent('div').remove(); x--;
+				})
+			}; */
+			
+        </script>
+    </head>
+    <body>
+
+        <!-- 3. Add the container -->
+		
+	<div class="container">
+
+	<div class="row">
+		<div class="span2" style="padding-top: 190px;">
+		
+		<select id="combo" onchange="setChart()">
+			<option value="default" selected>Select KPI</option>
+			<option value="accounts_payable">Accounts Payable</option>
+			<option value="gross_margin">Gross Margin</option>
+			<option value="net_income">Net Income</option>
+			<option value="net_sales">Net Sales</option>
+        </select>
+		
+		
+		</div>
+		
+		<div class="span8">
+		
+		<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+		
+		
+		</div>
+			
+	</div>
+	
+	<div class="row">
+	
+		<div class="span8 offset2">
+		
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		   
+		<td width="33%" align="middle"> 
+		<select id="xstart" class="secondary" onchange="setChart()">
+				<option value="" selected>Select</option>
+			</select>
+		</td>
+		
+		<td width="33%" align="middle">  
+		<select id="main_list" onchange="setChart()">
+				<option value="" selected>Select Time Type</option>
+				<option value="Year">Year</option>
+				<option value="Quarter">Quarter</option>
+			</select>
+		</td>
+		
+			
+		<td width="33%" align="middle"> 
+		<select id="xend" class="firstly" onchange="setChart()">
+				<option value="" selected>Select</option>
+			</select>
+		</td>
+		</tr>
+		</table>
+		
+		</div>
+			
+	</div>
+	
+	<div class="row">
+	
+		<div class="span8 offset2">
+		
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		
+		
+		<tr>
+		   
+		<td width="33%" align="middle">
+		
+		<select id="companyList" class="companyList" name="company[]" onchange="addCompany()">
+			<option value="default" selected>Add company</option>
+			<option value="apple">Apple Inc</option>
+			<option value="samsung">Samsung Inc</option>
+			<option value="HTC">HTC Corp</option>
+			<option value="sony">Sony Corp</option> 
+		</select>
+		
+		</td>
+		
+		<td width="33%" align="middle">
+		
+		<select id="company_remove" class="company_remove" name="company[]" onchange="removeCompany()">
+			<option value="default" selected>Remove company</option>
+			<option value="apple">Apple Inc</option>
+			<option value="samsung">Samsung Inc</option>
+			<option value="HTC">HTC Corp</option>
+			<option value="sony">Sony Corp</option> 
+		</select>
+		
+		</td>
+		
+		<!--<span class="company_list"></span>
+		Add Company &nbsp;&nbsp;<img onclick="javascript:addCompany();" src="add-button-md.png" class="add_field_button" style="width:15px;height:15px;border:0">
+		
+		</td>-->
+		
+		<!--<td width="33%" align="middle">
+
+		Remove Company: <img onclick="javascript:removeCompany();" src="delete.png" class="remove_field_button" style="width:15px;height:15px;border:0">
+		<span class="input_fields_wrap"></span>
+		
+		</td> -->
+		
+		</tr>
+				
+		</table>
+		
+		</div>
+			
+	</div>
+	
+		
+	</div>
+						
+</body>
+</html>
