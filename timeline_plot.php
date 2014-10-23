@@ -580,11 +580,9 @@
                                 chart.series[0].remove(true);
 
                                 $(document).ready(function() {
-                                    if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "Year"){
-                                        var kpi = "timeline_json/timeline_plot_Year.json";
-                                    }
+                                        
+                                var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
                                    
@@ -611,11 +609,8 @@
                                 chart.series[0].remove(true);
 
                                 $(document).ready(function() {
-                                    if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "Year"){
-                                        var kpi = "timeline_json/timeline_plot_Year.json";
-                                    }
+                                        
+                                var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                     
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
@@ -643,11 +638,9 @@
                                 chart.series[0].remove(true);
 
                                 $(document).ready(function() {
-                                    if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "Year"){
-                                        var kpi = "timeline_json/timeline_plot_Year.json";
-                                    }
+                                       
+                                var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
                                    
@@ -674,11 +667,9 @@
                                 chart.series[0].remove(true);
 
                                 $(document).ready(function() {
-                                    if (list == "Quarter") {
+                                    
                                         var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "Year"){
-                                        var kpi = "timeline_json/timeline_plot_Year.json";
-                                    }
+                                        
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
                                    
@@ -753,14 +744,10 @@
 
 					if (vals[i] == "samsung" && vals[i] == selected_samsung) {
 						$(document).ready(function() {
-							if (list == "Quarter") {
                                         var samsung = "getChartData.php?modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                         
-                                    } else if (list == "year"){
-                                        var samsung = "timeline_json/accounts_payable/timeline_plot_sony.json";
-                                    }
-                                   
+                                    
 							$.getJSON(samsung, function(data) {
 								var list = [];
 								//var endx = ++end;
@@ -796,12 +783,9 @@
 					if (vals[i] == "apple" && vals[i] == selected_apple) {
 						$(document).ready(function() {
 							
-					if (list == "Quarter") {
                                         var apple = "getChartData.php?modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "year"){
-                                        var apple = "timeline_json/accounts_payable/timeline_plot_sony.json";
-                                    }
+                                    
 							$.getJSON(apple, function(data) {
 								var list = [];
 								//var endx = ++end;
@@ -836,12 +820,9 @@
 					if (vals[i] == "htc" && vals[i] == selected_htc) {
 						$(document).ready(function() {
 							
-							if (list == "Quarter") {
                                         var htc = "getChartData.php?modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "year"){
-                                        var htc = "timeline_json/accounts_payable/timeline_plot_sony.json";
-                                    }
+                                    
 							$.getJSON(htc, function(data) {
 								var list = [];
 								//var endx = ++end;
@@ -876,12 +857,9 @@
 					if (vals[i] == "sony" && vals[i] == selected_sony) {
 						$(document).ready(function() {
 							
-						if (list == "Quarter") {
                                         var sony = "getChartData.php?modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?modeID=quarter&company="+company_name;
-                                    } else if (list == "year"){
-                                        var sony = "timeline_json/accounts_payable/timeline_plot_sony.json";
-                                    }
+                                    
 							$.getJSON(sony, function(data) {
 								var list = [];
 								//var endx = ++end;
