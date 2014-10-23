@@ -405,11 +405,7 @@
 						</td>
 						
 						<td width="33%" align="middle">  
-						<select id="main_list" onchange="setChart()">
-								<option value="" selected>Select Time Type</option>
-								<option value="Year">Year</option>
-								<option value="Quarter">Quarter</option>
-							</select>
+                                                    <input id="main_list" type="text" value="Quarter" readonly size="10">
 						</td>
 								
 						<td width="33%" align="middle">
