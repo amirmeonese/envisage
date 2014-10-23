@@ -391,10 +391,14 @@
 						<select id="xstart" class="secondary" onchange="setChart()">
 								<option value="default" selected>Select Start Quarter</option>
 								<?php 
-								while($row = mysql_fetch_array($Result))
+								//while($row = mysql_fetch_array($Result))
+                                                                 $i = 0;
+                                                                     while( $i < $row = mysql_fetch_array($Result))
 								{       
-									  echo "<option value=\"".$row["quarter"]."\"";
-									  echo ">".$row["quarter"]."</option>";        
+									  echo "<option value=\"".$i."\"";
+									  echo ">".$row["quarter"]."</option>";
+                                                                          
+                                                                          $i++;
 								}  
 								?>							
 						</select>
@@ -420,10 +424,14 @@
 						<select id="xend" class="firstly" onchange="setChart()">
 								<option value="default" selected>Select End Quarter</option>
 								<?php 
-								while($row = mysql_fetch_array($Result))
+								//while($row = mysql_fetch_array($Result))
+								$i = 1;
+                                                                     while( $i < $row = mysql_fetch_array($Result))
 								{       
-									  echo "<option value=\"".$row["quarter"]."\"";
-									  echo ">".$row["quarter"]."</option>";        
+									  echo "<option value=\"".$i."\"";
+									  echo ">".$row["quarter"]."</option>";
+                                                                          
+                                                                          $i++;
 								}  
 								?>		
 						</select>
@@ -590,7 +598,7 @@
                                                     var list1 =  Quarter.slice( start, end);
                                                     
                                                 }
-                                                chart.xAxis[0].setCategories(list1, true);
+                                                //chart.xAxis[0].setCategories(list1, true);
 
                                             });
 
@@ -622,7 +630,7 @@
                                                     var list1 =  Quarter.slice( start, end);
                                                     
                                                 }
-                                                chart.xAxis[0].setCategories(list1, true);
+                                                //chart.xAxis[0].setCategories(list1, true);
 
                                             });
 
@@ -653,7 +661,7 @@
                                                     var list1 =  Quarter.slice( start, end);
                                                     
                                                 }
-                                                chart.xAxis[0].setCategories(list1, true);
+                                                //chart.xAxis[0].setCategories(list1, true);
 
                                             });
 
@@ -684,7 +692,7 @@
                                                     var list1 =  Quarter.slice( start, end);
                                                     
                                                 }
-                                                chart.xAxis[0].setCategories(list1, true);
+                                                //chart.xAxis[0].setCategories(list1, true);
 
                                             });
 
@@ -751,6 +759,7 @@
 						$(document).ready(function() {
 							if (list == "Quarter") {
                                         var samsung = "getChartData.php?modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                         
                                     } else if (list == "year"){
                                         var samsung = "timeline_json/accounts_payable/timeline_plot_sony.json";
@@ -771,6 +780,19 @@
                                                                   
 								chart.addSeries({id: 'samsung', name: "Samsung Inc", data: list, type: "line"}); 
 							});
+                                                        
+                                                        $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
 
 						});
 					}
@@ -780,6 +802,7 @@
 							
 					if (list == "Quarter") {
                                         var apple = "getChartData.php?modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                     } else if (list == "year"){
                                         var apple = "timeline_json/accounts_payable/timeline_plot_sony.json";
                                     }
@@ -797,6 +820,19 @@
 								   } 
 								chart.addSeries({id: 'apple', name: "Apple Inc", data: list, type: "line"}); 
 							});
+                                                        
+                                                        $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
 
 						});
 					}
@@ -806,6 +842,7 @@
 							
 							if (list == "Quarter") {
                                         var htc = "getChartData.php?modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                     } else if (list == "year"){
                                         var htc = "timeline_json/accounts_payable/timeline_plot_sony.json";
                                     }
@@ -823,6 +860,19 @@
 								   } 
 								chart.addSeries({id: 'htc', name: "HTC Corp", data: list, type: "line"}); 
 							});
+                                                        
+                                                        $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
 
 						});
 					}
@@ -832,6 +882,7 @@
 							
 						if (list == "Quarter") {
                                         var sony = "getChartData.php?modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
                                     } else if (list == "year"){
                                         var sony = "timeline_json/accounts_payable/timeline_plot_sony.json";
                                     }
@@ -849,6 +900,19 @@
 								   } 
 								chart.addSeries({id: 'sony', name: "Sony Corp", data: list, type: "line"}); 
 							});
+                                                        
+                                                        $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    var list1 =  Quarter.slice( start, end);
+                                                    
+                                                }
+                                                chart.xAxis[0].setCategories(list1, true);
+
+                                            });
 
 						});
 					}
@@ -928,55 +992,6 @@
 				
                                     
             };
-
-            $(function() {
-                var sel, i,
-                        Year = ['2009','2010','2011', '2012', '2013', '2014'],
-                        start = ['0', '1', '2', '3','4','5'],
-                        end = ['1', '2', '3', '4','5','6'],
-                        Quarter = ['Q1 2011', 'Q2 2011', 'Q3 2011', 'Q4 2011', 'Q1 2012', 'Q2 2012'],
-                        dev_default = '<option value="default" selected>Select</option>';
-
-                sel_brand = $('#xstart');
-                sel_version = $('#xend');
-                
-                
-                $('select').change(function() {
-                    switch (this.id) {
-                        case 'main_list':
-                            $('.secondary').hide();
-                            sel_brand.find('option').remove();
-                            sel_brand.append(dev_default);
-                            sel_brand.show();
-                            $('.firstly').hide();
-                            sel_version.find('option').remove();
-                            sel_version.append(dev_default);
-                            sel_version.show();
-                            if (this.value == 'Year') {
-                                for (i = 0; i < Year.length; i++) {
-                                    $("#xstart").append(
-                                            '<option value="' + start[i] + '">' + Year[i] + '</option>'
-                                            ),
-                                            $("#xend").append(
-                                            '<option value="' + end[i] + '">' + Year[i] + '</option>'
-                                            );
-                                }
-                            } else if (this.value == 'Quarter') {
-                                for (i = 0; i < Quarter.length; i++) {
-                                    $("#xstart").append(
-                                            '<option value="' + start[i] + '">' + Quarter[i] + '</option>'
-                                            ),
-                                            $("#xend").append(
-                                            '<option value="' + end[i] + '">' + Quarter[i] + '</option>'
-                                            );
-                                }
-                            }
-                            break;
-
-                    }
-                });
-
-			}); 
 			
 		
         </script>
