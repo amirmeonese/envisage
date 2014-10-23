@@ -308,7 +308,28 @@ $result1 = mysql_query($sql);
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                  <li>
-                                    <a href="timeline_chart.php">Timeline Chart</a>
+                                    <a href="timeline_plot.php">Timeline Plot</a>
+                                </li>
+								 <li>
+                                    <a href="column_chart.php">Column Chart</a>
+                                </li>
+								 <li>
+                                    <a href="area_chart.php">Area Chart</a>
+                                </li>
+								 <li>
+                                    <a href="pie_chart.php">Pie Chart</a>
+                                </li>
+								<li>
+                                    <a href="bar_chart.php">Bar Chart</a>
+                                </li>
+								<li>
+                                    <a href="scatter_plot.php">Scatter Plot</a>
+                                </li>
+								<li>
+                                    <a href="multivariable_graph.php">Multi Variable Graph</a>
+                                </li>
+								<li>
+                                    <a href="candlestick_chart.php">Candlestick Chart</a>
                                 </li>
                                
                             </ul>
@@ -325,7 +346,7 @@ $result1 = mysql_query($sql);
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">View File</h1>
+                    <h1 class="page-header">View Database</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -340,28 +361,32 @@ $result1 = mysql_query($sql);
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <?php while ($row = mysql_fetch_array($result1)) {
-//    echo "Table: <\br>";
-    $result = mysqli_query($con,"SELECT * FROM $row[0]");
-    
-    $sql1 = "select column_name from information_schema.columns where table_name='".$row[0]."'";
-    $result2 = mysql_query($sql1);
-    
-    if($result2 === FALSE) {
-    die(mysql_error()); // TODO: better error handling
-}?>
+									
+										$result = mysqli_query($con,"SELECT * FROM $row[0]");
+										
+										$sql1 = "select column_name from information_schema.columns where table_name='".$row[0]."'";
+										$result2 = mysql_query($sql1);
+										
+										if($result2 === FALSE) {
+										die(mysql_error()); 
+										
+									}?>
                                 <table class="table table-striped table-bordered table-hover">
-
-                                        <tr><td style="font:bold 18px arial; text-align:center; border-bottom:1px solid #eee; padding:5px 0 10px 0;">
-
-                                                <?php echo $row[0] ?></td></tr>
+								
+										
+										<h4>
+										<?php echo $row[0] ?>
+										</h4>
+										
+                                     
                                         <tr> 
                                             <?php while ($row2 = mysql_fetch_array($result2)) { ?>
 
-                                                <td>
+										<td>
 
-                                                    <?php echo $row2[0]; ?></td>
+											<?php echo $row2[0]; ?></td>
 
-                                            <?php } ?>
+										<?php } ?>
                                         </tr>
                                         <?php $counter = mysql_num_rows($result2);
                                         while ($row1 = mysqli_fetch_array($result)) {
@@ -370,13 +395,7 @@ $result1 = mysql_query($sql);
 
                                         <?php for ($i = 0; $i < $counter; $i++) { ?>
 
-
-
-
-
-                                                    <td><?php echo $row1[$i]; ?></td>
-
-
+                                            <td><?php echo $row1[$i]; ?></td>
 
                                             <?php } ?>
                                             </tr>
@@ -386,7 +405,6 @@ $result1 = mysql_query($sql);
 
                                     mysql_free_result($result1);
                                     ?>
-                                </table>
                             </div>
                             <!-- /.table-responsive -->
                            
@@ -421,8 +439,6 @@ $result1 = mysql_query($sql);
 
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
-
-   
 
 </body>
 

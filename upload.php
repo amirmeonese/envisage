@@ -77,7 +77,7 @@ $data_f_Name = trim($allDataInSheet[$i]["F"]);
 
 $insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."');");
 
-$msg = 'Record has been updated.<a href="view.php">Click here</a> to view this record.';
+$msg = '<div class="alert alert-success">Record has been updated.</div>';
 
 }
     
@@ -114,7 +114,7 @@ $data_f_Name = trim($allDataInSheet[$i]["F"]);
 $insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."');");
 
 
-$msg = 'Record has been added.<a href="view.php">Click here</a> to view this record.';
+$msg = '<div class="alert alert-success">Record has been added.</div>';
 //}
 
 }
@@ -123,8 +123,6 @@ $msg = 'Record has been added.<a href="view.php">Click here</a> to view this rec
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -175,6 +173,8 @@ $msg = 'Record has been added.<a href="view.php">Click here</a> to view this rec
 </head>
 
 <body>
+
+    <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -423,10 +423,31 @@ $msg = 'Record has been added.<a href="view.php">Click here</a> to view this rec
                             <a href="view.php"><i class="fa fa-table fa-fw"></i> View File</a>
                         </li>
                         <li>
-                            <a href="chart.php"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                <li>
-                                    <a href="timeline_chart.php">Timeline Chart</a>
+                                    <a href="timeline_plot.php">Timeline Plot</a>
+                                </li>
+								 <li>
+                                    <a href="column_chart.php">Column Chart</a>
+                                </li>
+								 <li>
+                                    <a href="area_chart.php">Area Chart</a>
+                                </li>
+								 <li>
+                                    <a href="pie_chart.php">Pie Chart</a>
+                                </li>
+								<li>
+                                    <a href="bar_chart.php">Bar Chart</a>
+                                </li>
+								<li>
+                                    <a href="scatter_plot.php">Scatter Plot</a>
+                                </li>
+								<li>
+                                    <a href="multivariable_graph.php">Multi Variable Graph</a>
+                                </li>
+								<li>
+                                    <a href="candlestick_chart.php">Candlestick Chart</a>
                                 </li>
                                 
                             </ul>
@@ -460,7 +481,7 @@ $msg = 'Record has been added.<a href="view.php">Click here</a> to view this rec
                                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
                                  
                                         <div class="form-group">
-                                            <?php echo "$msg</br>";?>
+											<?php echo "$msg</br>";?>
                                             <label>File input</label>
                                             <input type="file" name="file" id="file" />
                                         </div>

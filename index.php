@@ -288,11 +288,32 @@
 						<li>
                             <a href="view.php"><i class="fa fa-table fa-fw"></i> View File</a>
                         </li>
-                        <li>
-                            <a href="chart.php"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
+                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="timeline_chart.php">Timeline Chart</a>
+                                    <a href="timeline_plot.php">Timeline Plot</a>
+                                </li>
+								 <li>
+                                    <a href="column_chart.php">Column Chart</a>
+                                </li>
+								 <li>
+                                    <a href="area_chart.php">Area Chart</a>
+                                </li>
+								 <li>
+                                    <a href="pie_chart.php">Pie Chart</a>
+                                </li>
+								<li>
+                                    <a href="bar_chart.php">Bar Chart</a>
+                                </li>
+								<li>
+                                    <a href="scatter_plot.php">Scatter Plot</a>
+                                </li>
+								<li>
+                                    <a href="multivariable_graph.php">Multi Variable Graph</a>
+                                </li>
+								<li>
+                                    <a href="candlestick_chart.php">Candlestick Chart</a>
                                 </li>
                                 
                             </ul>
@@ -419,11 +440,6 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
