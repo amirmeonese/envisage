@@ -405,7 +405,6 @@
 						</td>
 						
 						<td width="33%" align="middle">  
-                                                    <input id="main_list" type="text" value="Quarter" readonly size="10">
 						</td>
 								
 						<td width="33%" align="middle">
@@ -891,7 +890,7 @@
 						});
 					}
 					
-					chart.setTitle({text: title + " by " + list + " " + start_title + "-" + end_title});
+					chart.setTitle({text: title + " by Quarter " + start_title + "-" + end_title});
 					
 				 });	
                                                                      
