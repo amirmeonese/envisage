@@ -49,6 +49,7 @@ $columnName3 = trim($allDataInSheet[2]["C"]);
 $columnName4 = trim($allDataInSheet[2]["D"]);
 $columnName5 = trim($allDataInSheet[2]["E"]);
 $columnName6 = trim($allDataInSheet[2]["F"]);
+$columnName7 = trim($allDataInSheet[2]["G"]);
 
 $query = "SELECT * FROM $tableName";
 $sql = mysql_query($query);
@@ -66,8 +67,9 @@ $data_c_Name = trim($allDataInSheet[$i]["C"]);
 $data_d_Name = trim($allDataInSheet[$i]["D"]);
 $data_e_Name = trim($allDataInSheet[$i]["E"]);
 $data_f_Name = trim($allDataInSheet[$i]["F"]);
+$data_g_Name = trim($allDataInSheet[$i]["G"]);
 
-$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."');");
+$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6, $columnName7) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."','".$data_g_Name."');");
 
 $msg = '<div class="alert alert-success">Record has been updated.</div>';
 
@@ -84,6 +86,7 @@ $columnName3 varchar(255),
 $columnName4 varchar(255),
 $columnName5 varchar(255),
 $columnName6 varchar(255),
+$columnName7 varchar(255),
 PRIMARY KEY ( id )
 );
 ");
@@ -95,6 +98,7 @@ $data_c_Name = trim($allDataInSheet[$i]["C"]);
 $data_d_Name = trim($allDataInSheet[$i]["D"]);
 $data_e_Name = trim($allDataInSheet[$i]["E"]);
 $data_f_Name = trim($allDataInSheet[$i]["F"]);
+$data_g_Name = trim($allDataInSheet[$i]["G"]);
 
 
 //$recResult = mysql_fetch_array($sql);
@@ -103,7 +107,7 @@ $data_f_Name = trim($allDataInSheet[$i]["F"]);
 //    $msg = 'Record already exist. <div style="Padding:20px 0 0 0;"></div>';
 //
 //} else {
-$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."');");
+$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6, $columnName7) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."','".$data_g_Name."');");
 
 
 $msg = '<div class="alert alert-success">Record has been added.</div>';
