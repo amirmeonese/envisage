@@ -376,7 +376,7 @@
 	
 						<div class="col-lg-8 col-lg-offset-3">
 						
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<table width="80%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 						   
 						<td width="33%" align="middle">
@@ -443,7 +443,7 @@
 	
 						<div class="col-lg-8 col-lg-offset-3">
 						
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<table width="80%" border="0" cellspacing="0" cellpadding="0">
 						
 						
 						<tr>
