@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("localhost","root","","import");
+include("DatabaseConnection.php");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -362,7 +362,7 @@ $result1 = mysql_query($sql);
                             <div class="table-responsive">
                                 <?php while ($row = mysql_fetch_array($result1)) {
 									
-										$result = mysqli_query($con,"SELECT * FROM $row[0]");
+										$result = mysql_query("SELECT * FROM $row[0]");
 										
 										$sql1 = "select column_name from information_schema.columns where table_name='".$row[0]."'";
 										$result2 = mysql_query($sql1);
@@ -389,7 +389,7 @@ $result1 = mysql_query($sql);
 										<?php } ?>
                                         </tr>
                                         <?php $counter = mysql_num_rows($result2);
-                                        while ($row1 = mysqli_fetch_array($result)) {
+                                        while ($row1 = mysql_fetch_array($result)) {
                                             ?>
                                             <tr>
 
