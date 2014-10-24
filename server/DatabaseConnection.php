@@ -10,7 +10,9 @@ $conn = mysql_connect("localhost","azieruzai_apurba","Apurba2014!");
  	//echo " database connected";
  }
  
- if( ! mysql_select_db("azieruzai_envisage",$conn) )
+$dbname = 'azieruzai_envisage';
+ 
+if( ! mysql_select_db("azieruzai_envisage",$conn) )
 {
  	echo " database not connected";
 }

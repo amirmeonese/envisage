@@ -10,6 +10,8 @@ $conn = mysql_connect("localhost","root","");
  	//echo " database connected";
  }
  
+$dbname = 'import';
+ 
  if( ! mysql_select_db("import",$conn) )
 {
  	echo " database not connected";

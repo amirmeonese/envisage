@@ -456,7 +456,7 @@
 						
 						<?php 
 							include("DatabaseConnection.php");
-							$SQL1 = "SHOW TABLES FROM import"; 
+							$SQL1 = "SHOW TABLES FROM $dbname"; 
 							$Result = mysql_query($SQL1) or die(mysql_error());
 														
 						?> 
@@ -466,8 +466,8 @@
 						<?php 
 							while($row = mysql_fetch_array($Result))
 							{       
-								  echo "<option value=\"".$row["Tables_in_import"]."\"";
-								  echo ">".$row["Tables_in_import"]."</option>";        
+								  echo "<option value=\"".$row["Tables_in_$dbname"]."\"";
+								  echo ">".$row["Tables_in_$dbname"]."</option>";        
 							}  
 						?>
 						
@@ -479,7 +479,7 @@
 						
 						<?php 
 							include("DatabaseConnection.php");
-							$SQL1 = "SHOW TABLES FROM import"; 
+							$SQL1 = "SHOW TABLES FROM $dbname"; 
 							$Result = mysql_query($SQL1) or die(mysql_error());
 														
 						?> 
@@ -489,8 +489,8 @@
 							<?php 
 							while($row = mysql_fetch_array($Result))
 							{       
-								  echo "<option value=\"".$row["Tables_in_import"]."\"";
-								  echo ">".$row["Tables_in_import"]."</option>";        
+								  echo "<option value=\"".$row["Tables_in_$dbname"]."\"";
+								  echo ">".$row["Tables_in_$dbname"]."</option>";        
 							}  
 							?>
 						</select>
