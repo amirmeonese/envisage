@@ -583,7 +583,7 @@
 
                                 $(document).ready(function() {
                                     if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
                                     } else if (list == "Year"){
                                         var kpi = "timeline_json/timeline_plot_Year.json";
                                     }
@@ -614,7 +614,7 @@
 
                                 $(document).ready(function() {
                                     if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
                                     } else if (list == "Year"){
                                         var kpi = "timeline_json/timeline_plot_Year.json";
                                     }
@@ -646,7 +646,7 @@
 
                                 $(document).ready(function() {
                                     if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
                                     } else if (list == "Year"){
                                         var kpi = "timeline_json/timeline_plot_Year.json";
                                     }
@@ -677,7 +677,7 @@
 
                                 $(document).ready(function() {
                                     if (list == "Quarter") {
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
                                     } else if (list == "Year"){
                                         var kpi = "timeline_json/timeline_plot_Year.json";
                                     }
@@ -755,8 +755,8 @@
 
 					if (vals[i] == "samsung" && vals[i] == selected_samsung) {
 						$(document).ready(function() {
-                                        var samsung = "getChartData.php?modeID="+title+"&company="+company_name;
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var samsung = "getChartData.php?chart=candlestick&modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
                                         
                                    
 							$.getJSON(samsung, function(data) {
@@ -794,8 +794,8 @@
 					if (vals[i] == "apple" && vals[i] == selected_apple) {
 						$(document).ready(function() {
 							
-                                        var apple = "getChartData.php?modeID="+title+"&company="+company_name;
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var apple = "getChartData.php?chart=candlestick&modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
 
 							$.getJSON(apple, function(data) {
 								var list = [];
@@ -831,8 +831,8 @@
 					if (vals[i] == "htc" && vals[i] == selected_htc) {
 						$(document).ready(function() {
 							
-                                        var htc = "getChartData.php?modeID="+title+"&company="+company_name;
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var htc = "getChartData.php?chart=candlestick&modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
 
 							$.getJSON(htc, function(data) {
 								var list = [];
@@ -868,8 +868,8 @@
 					if (vals[i] == "sony" && vals[i] == selected_sony) {
 						$(document).ready(function() {
 							
-                                        var sony = "getChartData.php?modeID="+title+"&company="+company_name;
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var sony = "getChartData.php?chart=candlestick&modeID="+title+"&company="+company_name;
+                                        var kpi = "getChartData.php?chart=candlestick&modeID=quarter&company="+company_name;
 
 							$.getJSON(sony, function(data) {
 								var list = [];

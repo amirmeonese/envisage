@@ -1,5 +1,5 @@
 <?php
- include("DatabaseConnection.php");
+include("DatabaseConnection.php");
 // Check connection
 
 $sql = "SHOW TABLES FROM $dbname";

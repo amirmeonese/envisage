@@ -7,7 +7,7 @@ $conn = mysql_connect("localhost","azieruzai_apurba","Apurba2014!");
  }
  else
  {
- 	//echo " database connected";
+ 	echo " database connected";
  }
  
 $dbname = 'azieruzai_envisage';
@@ -18,7 +18,7 @@ if( ! mysql_select_db("azieruzai_envisage",$conn) )
 }
 else
 { 
-	//echo " database connected";
+	echo " database connected";
 }
 
 
