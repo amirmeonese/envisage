@@ -1,16 +1,6 @@
 <?php
  include("DatabaseConnection.php");
 // Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$dbname = 'import';
-
-if (!mysql_connect('localhost', 'root', '')) {
-    echo 'Could not connect to mysql';
-    exit;
-}
 
 $sql = "SHOW TABLES FROM $dbname";
 $result1 = mysql_query($sql);

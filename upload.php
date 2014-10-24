@@ -57,8 +57,22 @@ $sql = mysql_query($query);
 if(!empty($sql)){
     
 
-    $query_drop = "Truncate table $tableName";
+   $query_drop = "drop table $tableName";
    $sql_drop = mysql_query($query_drop);
+   
+   $createTable= mysql_query("CREATE TABLE $tableName
+(
+id INT( 5 ) NOT NULL AUTO_INCREMENT,
+$columnName1 varchar(255),
+$columnName2 varchar(255),
+$columnName3 varchar(255),
+$columnName4 varchar(255),
+$columnName5 varchar(255),
+$columnName6 varchar(255),
+$columnName7 varchar(255),
+PRIMARY KEY ( id )
+);
+");
     
     for($i=3;$i<=$arrayCount;$i++){
 $companyName = trim($allDataInSheet[$i]["A"]);
