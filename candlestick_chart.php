@@ -536,17 +536,19 @@
                     series: [{
                             id: "default",
                             name: "Company",
-                            data: [],
-							type: "boxplot"
+                            data: []
                     }],
 					colors: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
 					"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 					title: {
-						text: 'Company KPI Comparison'
-					},				
+						text: "Company KPI's Comparison"
+					},
+                                        chart: {
+						type: 'boxplot'
+					},
 					yAxis: {
 						title: {
-							text: 'KPI'
+							text: 'Select KPI'
 						}
 					},
 					tooltip: {
@@ -809,11 +811,11 @@
 								   var list =  value.slice( start, end);
 								   
 								   } 
-								chart.addSeries({id: 'apple', name: "Apple Inc", data: list, type: "boxplot"}); 
+								chart.addSeries({id: 'apple', name: "Apple Inc", data: list, type: 'boxplot'});
 							});
 
 						$.getJSON(kpi, function(data) {
-                                    var list1 = [];
+                                                var list1 = [];
                                    
                                                 for (var i in data)
                                                 {

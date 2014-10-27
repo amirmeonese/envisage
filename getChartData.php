@@ -35,6 +35,18 @@ $data['data'][1] = (float) $row[$modeID];
 } // pie chart
 
 
+else if($chart=='candlestick' && $modeID !='quarter')
+{
+
+$result = mysql_query("SELECT $modeID FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
+
+while($row = mysql_fetch_assoc($result)) {
+
+$data[][]= $row[$modeID];
+}  
+	
+}
+
 else
 {
 
@@ -42,7 +54,7 @@ $result = mysql_query("SELECT $modeID FROM $company_name WHERE chart_type='$char
 
 while($row = mysql_fetch_assoc($result)) {
 
-$data['data'][] = (float) $row[$modeID];
+$data['data'][]= (float)$row[$modeID];
 }  
 	
 } // others
@@ -51,8 +63,24 @@ if (!$result) {
     die("Query to show fields from table failed");
 }
 
-array_push($result_data,$data);  
+if($chart=='candlestick' && $modeID !='quarter'){
+array_push($result_data,$data); 
+
+$val_data1 =  json_encode($data);
+
+$val_data2 = str_replace('"', '', $val_data1);
+
+$get_data = '[{"data":'.$val_data2.'}]';
+
+echo $get_data;
+}
+
+else {
+
+array_push($result_data,$data); 
 
 echo json_encode($result_data);
+    
+}
 
 ?>
