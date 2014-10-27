@@ -6,74 +6,50 @@ $company_name = $_GET['company'];
 $chart = $_GET['chart'];
 
 $data = array();
+$result_data = array();
 
 if($modeID=='quarter')
 {
 
 $result = mysql_query("SELECT `quarter` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
 
-
-
 while($row = mysql_fetch_assoc($result)) {
 
 $data['data'][][] = $row['quarter'];
 }
 
-}  
+} // quarter
 
-if($modeID=='net_income')
+else if($chart=='pie')
 {
 
-$result = mysql_query("SELECT `net_income` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
+$result = mysql_query("SELECT `company` , $modeID   FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
 
 while($row = mysql_fetch_assoc($result)) {
 
-$data['data'][] = (float) $row['net_income'];
+$data['data'][0] = $row['company'];
+$data['data'][1] = (float) $row[$modeID];
+
+}
+
+} // pie chart
+
+
+else
+{
+
+$result = mysql_query("SELECT $modeID FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
+
+while($row = mysql_fetch_assoc($result)) {
+
+$data['data'][] = (float) $row[$modeID];
 }  
 	
-}
-else if($modeID=='account_payable')
-{
-
-$result = mysql_query("SELECT `account_payable` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
-
-while($row = mysql_fetch_assoc($result)) {
-
-$data['data'][] = (float) $row['account_payable'];
-}  
-
-}
-else if($modeID=='gross_margin')
-{
-
-
-$result = mysql_query("SELECT `gross_margin` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
-
-while($row = mysql_fetch_assoc($result)) {
-
-$data['data'][] = (float) $row['gross_margin'];
-}  
-
-}
-else if($modeID=='net_sales')
-{
-
-$result = mysql_query("SELECT `net_sales` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
-
-while($row = mysql_fetch_assoc($result)) {
-
-$data['data'][] = (float) $row['net_sales'];
-}  
-
-}
+} // others
 
 if (!$result) {
     die("Query to show fields from table failed");
 }
-
-$result_data = array();
-
-
 
 array_push($result_data,$data);  
 
