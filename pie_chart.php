@@ -493,7 +493,7 @@
 					},				
 					yAxis: {
 						title: {
-							text: 'Select KPI'
+							text: 'KPI'
 						}
 					},
 					tooltip: {
@@ -555,16 +555,18 @@
 					   {
 						point_name[i] = myData[i].name; 
 						
-					   if(point_name[i] == "Samsung Inc"){
+						alert(point_name[i]);
+						
+					   if(point_name[i] == "samsung"){
 						 var selected_samsung = point_name[i];  
 					   } 
-					   if(point_name[i] === "Apple Inc"){
+					   if(point_name[i] === "apple"){
 						   var selected_apple = point_name[i];
 					   } 
-					   if(point_name[i] === "HTC"){
+					   if(point_name[i] === "htc"){
 						   var selected_htc = point_name[i];
 					   } 
-					   if(point_name[i] === "Sony"){
+					   if(point_name[i] === "sony"){
 						 var selected_sony = point_name[i];  
 					   } 
 					  }

@@ -581,6 +581,7 @@
                                 $(document).ready(function() {
                                         
                                 var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
+								
                                 
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
@@ -745,8 +746,7 @@
 						$(document).ready(function() {
                                         var samsung = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
-                                        
-                                    
+                                                                            
 							$.getJSON(samsung, function(data) {
 								var list = [];
 								//var endx = ++end;
@@ -763,7 +763,7 @@
 								chart.addSeries({id: 'samsung', name: "Samsung Inc", data: list, type: "line"}); 
 							});
                                                         
-                                                        $.getJSON(kpi, function(data) {
+                             $.getJSON(kpi, function(data) {
                                     var list1 = [];
                                    
                                                 for (var i in data)
