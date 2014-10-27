@@ -549,14 +549,12 @@
 				var myData = chart.series[0].data;
 				var point_name = [];
                    			   
-				if(point_name != null){
+						if(point_name != null){
                                
-				   for ( var i = 0; i < myData.length; i++ )
+						for ( var i = 0; i < myData.length; i++ )
 					   {
 						point_name[i] = myData[i].name; 
-						
-						alert(point_name[i]);
-						
+					
 					   if(point_name[i] == "samsung"){
 						 var selected_samsung = point_name[i];  
 					   } 
@@ -577,7 +575,7 @@
 						 var selected_htc = "";
 						 var selected_sony = "";  
                       }
-                                                                                
+                                                                 
 						var vals = [];
                         var textvals = [];
 						var list = $('#main_list').val();
