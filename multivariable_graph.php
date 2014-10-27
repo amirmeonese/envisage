@@ -592,7 +592,7 @@
 
                                 $(document).ready(function() {
                                    
-                                        var kpi = "getChartData.php?modeID=quarter&company="+company_name;
+                                        var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
                                     
                                 $.getJSON(kpi, function(data) {
                                     var list1 = [];
@@ -670,9 +670,9 @@
 					if (vals[i] == "samsung" && vals[i] == selected_samsung) {
 						$(document).ready(function() {
 							
-							var samsung_x = "getChartData.php?modeID="+title+"&company="+company_name;
-							var samsung_y = "getChartData.php?modeID="+list+"&company="+company_name;
-							var samsung_z = "getChartData.php?modeID="+third_kpi+"&company="+company_name;
+							var samsung_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
+							var samsung_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
+							var samsung_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
                                   
                            	$.getJSON(samsung_x, function(data_x) {
                                 $.getJSON(samsung_y, function(data_y) {
@@ -708,9 +708,9 @@
 					if (vals[i] == "apple" && vals[i] == selected_apple) {
 						$(document).ready(function() {
 							
-							var apple_x = "getChartData.php?modeID="+title+"&company="+company_name;
-							var apple_y = "getChartData.php?modeID="+list+"&company="+company_name;
-							var apple_z = "getChartData.php?modeID="+third_kpi+"&company="+company_name;
+							var apple_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
+							var apple_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
+							var apple_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
 							
 							$.getJSON(apple_x, function(data_x) {
                                 $.getJSON(apple_y, function(data_y) {
@@ -747,9 +747,9 @@
 					if (vals[i] == "htc" && vals[i] == selected_htc) {
 						$(document).ready(function() {
 						
-								var htc_x = "getChartData.php?modeID="+title+"&company="+company_name;
-								var htc_y = "getChartData.php?modeID="+list+"&company="+company_name;
-								var htc_z = "getChartData.php?modeID="+third_kpi+"&company="+company_name;
+								var htc_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
+								var htc_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
+								var htc_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
 							
 							$.getJSON(htc_x, function(data_x) {
                                 $.getJSON(htc_y, function(data_y) {
@@ -786,9 +786,9 @@
 					if (vals[i] == "sony" && vals[i] == selected_sony) {
 						$(document).ready(function() {
 									
-							var sony_x = "getChartData.php?modeID="+title+"&company="+company_name;
-							var sony_y = "getChartData.php?modeID="+list+"&company="+company_name;
-							var sony_z = "getChartData.php?modeID="+third_kpi+"&company="+company_name;
+							var sony_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
+							var sony_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
+							var sony_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
 						
 							$.getJSON(sony_x, function(data_x) {
                                 $.getJSON(sony_y, function(data_y) {

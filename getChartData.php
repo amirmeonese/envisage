@@ -7,11 +7,6 @@ $chart = $_GET['chart'];
 
 $data = array();
 
-if($chart!='candlestick' && $chart!='pie')
-{
-$chart = 'All';
-}
-
 if($modeID=='quarter')
 {
 

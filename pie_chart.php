@@ -489,17 +489,19 @@
 					colors: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
 					"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 					title: {
-						text: 'Percentage of KPIs for companies'
+						text:  'Percentage of KPIs for companies'
 					},				
 					yAxis: {
 						title: {
-							text: 'KPI'
+							text: 'Select KPI'
 						}
 					},
 					tooltip: {
-						valueSuffix: 'KM'
+						valueSuffix: 'KM',
+                        pointFormat:''
 					},
-					plotOptions: {
+                                        
+                    plotOptions: {
 						pie: {
 							allowPointSelect: true,
 							cursor: 'pointer',
@@ -508,7 +510,8 @@
 								format: '<b>{point.name}</b>: {point.percentage:.1f} %',
 							}
 						}
-					},				
+					},
+										
 					credits: {
 					  enabled: false
 					}	
@@ -584,12 +587,13 @@
 					$('.companyList option:selected').each(function(i, selected) {
 					vals[i] = $(selected).val();
 					textvals[i] = $(selected ).text();
+					var company_name = $('#companyList option:selected').val();
                                                                                                                                                      
 
 					if (vals[i] == "samsung" && textvals[i] != selected_samsung) {
 						$(document).ready(function() {
                                                     						
-							var samsung_x = "pie_chart_json/"+ title + "/scatter_plot_samsung.json";
+							var samsung_x = "getChartData.php?chart=pie&modeID="+title+"&company="+company_name;
                              
 							$.getJSON(samsung_x, function(data_x) {
                               		
@@ -607,7 +611,7 @@
 					if (vals[i] == "apple" && textvals[i] != selected_apple) {
 						$(document).ready(function() {
                                                                                                           
-                            var apple_x = "pie_chart_json/"+ title + "/scatter_plot_apple.json";
+                            var apple_x = "getChartData.php?chart=pie&modeID="+title+"&company="+company_name;
                                  
 							$.getJSON(apple_x, function(data_x) {
                                   	
@@ -622,9 +626,9 @@
 					}
                                         
 
-					if (vals[i] == "HTC" && textvals[i] != selected_htc) {
+					if (vals[i] == "htc" && textvals[i] != selected_htc) {
 						$(document).ready(function() {
-                            var HTC_x = "pie_chart_json/"+ title + "/scatter_plot_htc.json";
+                            var HTC_x = "getChartData.php?chart=pie&modeID="+title+"&company="+company_name;
 
                             $.getJSON(HTC_x, function(data_x) {
 								for (var i in data_x)
@@ -638,7 +642,7 @@
 
 					if (vals[i] == "sony" && textvals[i] != selected_sony) {
 						$(document).ready(function() {
-						var sony_x = "pie_chart_json/"+ title + "/scatter_plot_sony.json";
+						var sony_x = "getChartData.php?chart=pie&modeID="+title+"&company="+company_name;
 							$.getJSON(sony_x, function(data_x) {
 								for (var i in data_x)
 								{
