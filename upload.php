@@ -22,6 +22,7 @@ unlink($_FILES["file"]["name"]);
 $storagename = "data/".$_FILES["file"]["name"];
 move_uploaded_file($_FILES["file"]["tmp_name"],  $storagename);
 $uploadedStatus = 1;
+
 }
 } else {
 echo "No file selected <br />";
@@ -42,14 +43,13 @@ try {
 $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 $arrayCount = count($allDataInSheet);  //get total count of row in that Excel sheet
 
+$sheet = $objPHPExcel->getSheet(0);
+
+$highestColumm = $objPHPExcel->setActiveSheetIndex(0)->getHighestColumn();
+
+$colNumber = PHPExcel_Cell::columnIndexFromString($highestColumm);
+
 $tableName = trim($allDataInSheet[1]["A"]);
-$columnName1 = trim($allDataInSheet[2]["A"]);
-$columnName2 = trim($allDataInSheet[2]["B"]);
-$columnName3 = trim($allDataInSheet[2]["C"]);
-$columnName4 = trim($allDataInSheet[2]["D"]);
-$columnName5 = trim($allDataInSheet[2]["E"]);
-$columnName6 = trim($allDataInSheet[2]["F"]);
-$columnName7 = trim($allDataInSheet[2]["G"]);
 
 $query = "SELECT * FROM $tableName";
 $sql = mysql_query($query);
@@ -60,74 +60,80 @@ if(!empty($sql)){
    $query_drop = "drop table $tableName";
    $sql_drop = mysql_query($query_drop);
    
-   $createTable= mysql_query("CREATE TABLE $tableName
-(
-id INT( 5 ) NOT NULL AUTO_INCREMENT,
-$columnName1 varchar(255),
-$columnName2 varchar(255),
-$columnName3 varchar(255),
-$columnName4 varchar(255),
-$columnName5 varchar(255),
-$columnName6 varchar(255),
-$columnName7 varchar(255),
-PRIMARY KEY ( id )
-);
-");
+   $sql_create_table = "CREATE TABLE $tableName (";
+for ($j = 0; $j < $colNumber; $j++)
+{
+	$sql_create_table .= "" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=2) . " varchar(255)". ",";
+}
+$sql_create_table = substr($sql_create_table, 0, -1) . ");";
+        
+    $createTable= mysql_query($sql_create_table);
     
-    for($i=3;$i<=$arrayCount;$i++){
-$companyName = trim($allDataInSheet[$i]["A"]);
-$data_b_Name = trim($allDataInSheet[$i]["B"]);
-$data_c_Name = trim($allDataInSheet[$i]["C"]);
-$data_d_Name = trim($allDataInSheet[$i]["D"]);
-$data_e_Name = trim($allDataInSheet[$i]["E"]);
-$data_f_Name = trim($allDataInSheet[$i]["F"]);
-$data_g_Name = trim($allDataInSheet[$i]["G"]);
+    $sql = "INSERT INTO $tableName (";
+for ($j = 0; $j < $colNumber; $j++)
+{
+	$sql .= "" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=2). ",";
+}
+$sql = substr($sql, 0, -1) . ") VALUES\r\n";
+//cells
+for ($i = 3; $i <= $arrayCount; $i++)
+{
+	$sql .= "(";
+	for ($j = 0; $j < $colNumber; $j++)
+	{
+		$sql .= "'" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=$i) . "',";
+	}
+	$sql = substr($sql, 0, -1) . "),\r\n";
+}
+$sql =  substr($sql, 0, -3) . ";";
 
-$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6, $columnName7) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."','".$data_g_Name."');");
-
+$insertTable= mysql_query($sql);
+    
 $msg = '<div class="alert alert-success">Record has been updated.</div>';
 
-}
     
 } else {
-        
-    $createTable= mysql_query("CREATE TABLE $tableName
-(
-id INT( 5 ) NOT NULL AUTO_INCREMENT,
-$columnName1 varchar(255),
-$columnName2 varchar(255),
-$columnName3 varchar(255),
-$columnName4 varchar(255),
-$columnName5 varchar(255),
-$columnName6 varchar(255),
-$columnName7 varchar(255),
-PRIMARY KEY ( id )
-);
-");
     
-    for($i=3;$i<=$arrayCount;$i++){
-$companyName = trim($allDataInSheet[$i]["A"]);
-$data_b_Name = trim($allDataInSheet[$i]["B"]);
-$data_c_Name = trim($allDataInSheet[$i]["C"]);
-$data_d_Name = trim($allDataInSheet[$i]["D"]);
-$data_e_Name = trim($allDataInSheet[$i]["E"]);
-$data_f_Name = trim($allDataInSheet[$i]["F"]);
-$data_g_Name = trim($allDataInSheet[$i]["G"]);
+    
+    $sql_create_table = "CREATE TABLE $tableName (";
+for ($j = 0; $j < $colNumber; $j++)
+{
+	$sql_create_table .= "" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=2) . " varchar(255)". ",";
+}
+$sql_create_table = substr($sql_create_table, 0, -1) . ");";
+        
+    $createTable= mysql_query($sql_create_table);
+    
+    //echo $sql_create_table;
 
+//columns:
+$sql = "INSERT INTO $tableName (";
+for ($j = 0; $j < $colNumber; $j++)
+{
+	$sql .= "" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=2). ",";
+}
+$sql = substr($sql, 0, -1) . ") VALUES\r\n";
+//cells
+for ($i = 3; $i <= $arrayCount; $i++)
+{
+	$sql .= "(";
+	for ($j = 0; $j < $colNumber; $j++)
+	{
+		$sql .= "'" . $objPHPExcel->setActiveSheetIndex(0)->getCellByColumnAndRow($pColumn=$j,$pRow=$i) . "',";
+	}
+	$sql = substr($sql, 0, -1) . "),\r\n";
+}
+$sql =  substr($sql, 0, -3) . ";";
 
-//$recResult = mysql_fetch_array($sql);
-//$existName = $recResult["company"];
-//if(!empty($existName)) {
-//    $msg = 'Record already exist. <div style="Padding:20px 0 0 0;"></div>';
-//
-//} else {
-$insertTable= mysql_query("insert into $tableName ($columnName1, $columnName2,$columnName3, $columnName4,$columnName5, $columnName6, $columnName7) values('".$companyName."', '".$data_b_Name."','".$data_c_Name."', '".$data_d_Name."', '".$data_e_Name."','".$data_f_Name."','".$data_g_Name."');");
+$insertTable= mysql_query($sql);
+//echo '<pre>';
+//echo $sql;
 
 
 $msg = '<div class="alert alert-success">Record has been added.</div>';
 //}
 
-}
+
 }
 
 }
