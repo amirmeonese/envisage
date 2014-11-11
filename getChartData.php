@@ -1,21 +1,25 @@
 <?php
 include("DatabaseConnection.php");
 
-$modeID = $_GET['modeID'];
+if(!empty($_GET['modeID'])){
+   $modeID = $_GET['modeID']; 
+}
+
 $company_name = $_GET['company'];
 $chart = $_GET['chart'];
 
 $data = array();
 $result_data = array();
 
-if($modeID=='quarter')
+if(!empty($_GET['setID']))
 {
+$setID = $_GET['setID'];
 
-$result = mysql_query("SELECT `quarter` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
+$result = mysql_query("SELECT $setID FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
 
 while($row = mysql_fetch_assoc($result)) {
 
-$data['data'][][] = $row['quarter'];
+$data['data'][][] = $row[$setID];
 }
 
 } // quarter
@@ -27,7 +31,7 @@ $result = mysql_query("SELECT `company` , $modeID   FROM $company_name WHERE cha
 
 while($row = mysql_fetch_assoc($result)) {
 
-$data['data'][0] = $row['company'];
+$data['data'][0] = $company_name;
 $data['data'][1] = (float) $row[$modeID];
 
 }
