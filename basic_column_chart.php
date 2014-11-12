@@ -348,11 +348,25 @@
 						<tr>
                                                     <td>File:</td>  						
 						<td>  
-						<select id="table_name" class="companyList">
-								<option value="" selected>Select File</option>
-								<option value="apple">apple</option>
-                                                                <option value="net_income">net income</option>
-							</select>
+                                                    
+                                                    <?php 
+						include("DatabaseConnection.php");
+						$sql = "SHOW TABLES FROM $dbname";
+                                                $result1 = mysql_query($sql);
+														
+					?> 
+
+					<select id="table_name" class="companyList">
+						<option value="default" selected>Select File</option>
+						<?php 
+							while($row = mysql_fetch_array($result1))
+							{       
+								  echo "<option value=\"".$row[0]."\"";
+								  echo ">".$row[0]."</option>";        
+							}  
+						?>
+					</select>
+                                                    
 						</td>
 								
 						

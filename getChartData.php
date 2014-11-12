@@ -24,6 +24,18 @@ $data['data'][][] = $row[$setID];
 
 } // quarter
 
+else if($modeID=='quarter')
+{
+
+$result = mysql_query("SELECT `quarter` FROM $company_name WHERE chart_type='$chart' LIMIT 0, 30");
+
+while($row = mysql_fetch_assoc($result)) {
+
+$data['data'][][] = $row['quarter'];
+}
+
+}
+
 else if($chart=='pie')
 {
 

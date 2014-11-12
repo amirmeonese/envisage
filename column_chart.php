@@ -761,6 +761,7 @@
                                         var samsung = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
                                         
+                                        
 							$.getJSON(samsung, function(data) {
 								var list = [];
 								//var endx = ++end;
@@ -798,7 +799,7 @@
 							
                                         var apple = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
                                         var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
-
+                                        
 							$.getJSON(apple, function(data) {
 								var list = [];
 								//var endx = ++end;
