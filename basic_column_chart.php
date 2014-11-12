@@ -280,7 +280,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a class="active" href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
 						<li>
                             <a href="upload.php"><i class="fa fa-edit fa-fw"></i> Upload File</a>
@@ -288,14 +288,14 @@
 						<li>
                             <a href="view.php"><i class="fa fa-table fa-fw"></i> View Database</a>
                         </li>
-                        <li class="active">
+                         <li class="active">
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-								    <a href="timeline_plot.php">Timeline Plot</a>
+                                    <a href="timeline_plot.php">Timeline Plot</a>
                                 </li>
 								 <li>
-                                    <a class="active" href="column_chart.php">Column Chart</a>
+                                    <a href="column_chart.php">Column Chart</a>
                                 </li>
 								 <li>
                                     <a href="area_chart.php">Area Chart</a>
@@ -316,6 +316,15 @@
                                     <a href="candlestick_chart.php">Candlestick Chart</a>
                                 </li>
                                 
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Basic Chart<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="basic_column_chart.php">Basic Column Plot</a>
+                                </li>                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -407,7 +416,7 @@
 						  <td width="33%" align="middle"> 
 
 		</td> 
-						<td width="33%" align="middle">
+						<td width="15%">
 						
 
 					<select id="dataSet" class="firstly" onchange="addCompany()">
@@ -760,7 +769,7 @@
 //						});
 //					}
 					
-					chart.setTitle({text: title + " by " + set + start_title + "-" + end_title});
+					chart.setTitle({text: title + " by " + set});
 					
 				 });	
                                                                      
