@@ -323,7 +323,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Basic Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="basic_timeline_plot.php.php">Basic Timeline Plot</a>
+                                    <a href="basic_timeline_plot.php">Basic Timeline Plot</a>
                                 </li>
                                 <li>
                                     <a href="basic_column_chart.php">Basic Column Chart</a>
