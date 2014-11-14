@@ -342,7 +342,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Column Chart</h1>
+                    <h1 class="page-header">Basic Column Chart</h1>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div>
@@ -583,7 +583,6 @@
                                    series_htc = chart.get('htc');
                            
                            
-                           
                            if(series_samsung === null){
                                var selected_samsung = "samsung";
                            } else {
@@ -624,14 +623,17 @@
                 
                 var table = $('#table_name option:selected').val();
                 
-			
+			//if(chart.series[0] === undefined){
+                            
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+                            
 				$('.companyList').each(function(i, selected) {
 				vals[i] = $(selected).val();
 				textvals[i] = $(selected).text();
                                                                                                
 
-					//if (vals[i] == "samsung" && vals[i] == selected_samsung) {
-						//$(document).ready(function() {
+
                                         var samsung = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
                                         
 							$.getJSON(samsung, function(data) {
@@ -672,123 +674,11 @@
 								chart.yAxis[0].setTitle({text: 'Net Income'});
 							});
 
-						//});
-					//}
-
-//					if (vals[i] == "apple" && vals[i] == selected_apple) {
-//						$(document).ready(function() {
-//							
-//                                        var apple = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-//                                        var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
-//
-//							$.getJSON(apple, function(data) {
-//								var list = [];
-//								//var endx = ++end;
-//																				
-//								for (var i in data)
-//								{
-//								
-//								
-//								   var value = data[i].data;
-//								   var list =  value.slice( start, end);
-//								   
-//								   } 
-//								chart.addSeries({id: 'apple', name: "Apple Inc", data: list, type: "column"}); 
-//							});
-//
-//						$.getJSON(kpi, function(data) {
-//                                    var list1 = [];
-//                                   
-//                                                for (var i in data)
-//                                                {
-//                                                    var Quarter = data[i].data;
-//                                                    var list1 =  Quarter.slice( start, end);
-//                                                    
-//                                                }
-//                                                chart.xAxis[0].setCategories(list1, true);
-//
-//                                            });
-//
-//						});
-//					}
-//
-//					if (vals[i] == "htc" && vals[i] == selected_htc) {
-//						$(document).ready(function() {
-//							
-//                                        var htc = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-//                                        var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
-//
-//							$.getJSON(htc, function(data) {
-//								var list = [];
-//								//var endx = ++end;
-//																				
-//								for (var i in data)
-//								{
-//								
-//								
-//								   var value = data[i].data;
-//								   var list =  value.slice( start, end);
-//								   
-//								   } 
-//								chart.addSeries({id: 'htc', name: "HTC Corp", data: list, type: "column"}); 
-//							});
-//
-//						$.getJSON(kpi, function(data) {
-//                                    var list1 = [];
-//                                   
-//                                                for (var i in data)
-//                                                {
-//                                                    var Quarter = data[i].data;
-//                                                    var list1 =  Quarter.slice( start, end);
-//                                                    
-//                                                }
-//                                                chart.xAxis[0].setCategories(list1, true);
-//
-//                                            });
-//
-//						});
-//					}
-//
-//					if (vals[i] == "sony" && vals[i] == selected_sony) {
-//						$(document).ready(function() {
-//							
-//                                        var sony = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-//                                        var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
-//
-//							$.getJSON(sony, function(data) {
-//								var list = [];
-//								//var endx = ++end;
-//																				
-//								for (var i in data)
-//								{
-//								
-//								
-//								   var value = data[i].data;
-//								   var list =  value.slice( start, end);
-//								   
-//								   } 
-//								chart.addSeries({id: 'sony', name: "Sony Corp", data: list, type: "column"}); 
-//							});
-//
-//						$.getJSON(kpi, function(data) {
-//                                    var list1 = [];
-//                                   
-//                                                for (var i in data)
-//                                                {
-//                                                    var Quarter = data[i].data;
-//                                                    var list1 =  Quarter.slice( start, end);
-//                                                    
-//                                                }
-//                                                chart.xAxis[0].setCategories(list1, true);
-//
-//                                            });
-//
-//						});
-//					}
 					
 					chart.setTitle({text: title + " by " + set});
-					
-				 });	
+                        	
+				 });
+                                 
                                                                      
             };
 			
@@ -864,12 +754,7 @@
             
             $(function() {
 
-                    var sel, i,
-                        Year = ['2009','2010','2011', '2012'],
-                        start = ['0', '1', '2', '3','4','5'],
-                        end = ['1', '2', '3', '4','5','6'],
-                        Quarter = ['Q1 2011', 'Q2 2011', 'Q3 2011', 'Q4 2011'],
-                        dev_default = '<option value="default" selected>Select</option>';
+                    var dev_default = '<option value="default" selected>Select</option>';
                 
                  
 
