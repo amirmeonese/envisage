@@ -330,9 +330,41 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Multi Variable Graph</h1>
+                    <h1 class="page-header">Basic Scatter Plot</h1>
                 </div>
                 <!-- /.col-lg-12 -->
+                <div>
+						
+						<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+                                                    <td>File:</td>  						
+						<td>  
+                                                    
+                                                    <?php 
+						include("DatabaseConnection.php");
+						$sql = "SHOW TABLES FROM $dbname";
+                                                $result1 = mysql_query($sql);
+														
+					?> 
+
+					<select id="table_name" class="companyList">
+						<option value="default" selected>Select File</option>
+						<?php 
+							while($row = mysql_fetch_array($result1))
+							{       
+								  echo "<option value=\"".$row[0]."\"";
+								  echo ">".$row[0]."</option>";        
+							}  
+						?>
+					</select>
+                                                    
+						</td>
+								
+						
+						</tr>
+						</table>
+						
+						</div>
             </div>
 			
 			<div class="row">
@@ -346,22 +378,9 @@
 					
 					<tr>
 						<td height="100px" align="middle">
-						<?php 
-						include("DatabaseConnection.php");
-						$SQL1 = "SHOW COLUMNS FROM apple"; 
-						$Result = mysql_query($SQL1) or die(mysql_error());
-														
-						?> 
 						
-						<select id="main_list" onchange="setChart()">
-							<option value="default" selected>Select KPI 1</option>
-							<?php 
-								while($row = mysql_fetch_array($Result))
-								{       
-									  echo "<option value=\"".$row["Field"]."\"";
-									  echo ">".$row["Field"]."</option>";       
-								}  
-							?>
+						<select id="main_list" class="firstly" onchange="addCompany()">
+							<option value="" selected>Select</option>
 							</select>
 						</td>
 					</tr>	
@@ -389,22 +408,8 @@
 		
 							<td width="33%" align="middle">
 							
-							<?php 
-							include("DatabaseConnection.php");
-							$SQL1 = "SHOW COLUMNS FROM apple"; 
-							$Result = mysql_query($SQL1) or die(mysql_error());
-															
-							?> 
-							
-							<select id="combo" onchange="setChart()">
-								<option value="default" selected>Select KPI 2</option>
-								<?php 
-								while($row = mysql_fetch_array($Result))
-								{       
-									  echo "<option value=\"".$row["Field"]."\"";
-									  echo ">".$row["Field"]."</option>";        
-								}  
-								?>
+							<select id="combo" class="secondary" onchange="addCompany()">
+								<option value="" selected>Select</option>
 							</select>
 							
 							</td>
@@ -413,22 +418,8 @@
 							
 							<td width="33%" align="middle">
 							
-							<?php 
-							include("DatabaseConnection.php");
-							$SQL1 = "SHOW COLUMNS FROM apple"; 
-							$Result = mysql_query($SQL1) or die(mysql_error());
-															
-							?> 
-							
-							<select id="third_kpi" onchange="setChart()">
-								<option value="default" selected>Select KPI 3</option>
-								<?php 
-								while($row = mysql_fetch_array($Result))
-								{       
-									  echo "<option value=\"".$row["Field"]."\"";
-									  echo ">".$row["Field"]."</option>";        
-								}  
-								?>
+							<select id="third_kpi" class="thirdly" onchange="addCompany()">
+								<option value="" selected>Select</option>
 							</select>
 							
 							</td>
@@ -441,67 +432,6 @@
 							
 					</div>
 
-						<div class="panel-body">
-	
-						<div class="col-lg-8 col-lg-offset-3">
-						
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						
-						
-						<tr>
-						   
-						<td width="33%" align="middle">
-						
-						<?php 
-							include("DatabaseConnection.php");
-							$SQL1 = "SHOW TABLES FROM $dbname"; 
-							$Result = mysql_query($SQL1) or die(mysql_error());
-														
-						?> 
-						
-						<select id="companyList" class="companyList" name="company[]" onchange="addCompany()">
-							<option value="default" selected>Add company</option>
-						<?php 
-							while($row = mysql_fetch_array($Result))
-							{       
-								  echo "<option value=\"".$row["Tables_in_$dbname"]."\"";
-								  echo ">".$row["Tables_in_$dbname"]."</option>";        
-							}  
-						?>
-						
-						</select>
-						
-						</td>
-						
-						<td width="33%" align="middle">
-						
-						<?php 
-							include("DatabaseConnection.php");
-							$SQL1 = "SHOW TABLES FROM $dbname"; 
-							$Result = mysql_query($SQL1) or die(mysql_error());
-														
-						?> 
-						
-						<select id="company_remove" class="company_remove" name="company[]" onchange="removeCompany()">
-							<option value="default" selected>Remove company</option>
-							<?php 
-							while($row = mysql_fetch_array($Result))
-							{       
-								  echo "<option value=\"".$row["Tables_in_$dbname"]."\"";
-								  echo ">".$row["Tables_in_$dbname"]."</option>";        
-							}  
-							?>
-						</select>
-						
-						</td>
-						
-						</tr>
-								
-						</table>
-						
-						</div>
-							
-					</div>
  
             </div>
            <!-- /.panel -->
@@ -621,6 +551,7 @@
                                    series_sony = chart.get('sony'),
                                    series_htc = chart.get('htc');
                            
+                           
                            if(series_samsung === null){
                                var selected_samsung = "samsung";
                            } else {
@@ -651,28 +582,30 @@
                 var textvals = [];
 				
 				var list = $('#main_list').val();
-				var list_text = $('#main_list option:selected').text();
                 var title = $('#combo option:selected').val();
-				var title_text = $('#combo option:selected').text();
-				var company_name = $('#companyList option:selected').val();
+				var company_name = $('#table_name option:selected').val();
 				var start = $('#xstart').val();
 				var end = $('#xend').val();
+                                var set = $('#dataSet option:selected').val();
 				var start_title = $('#xstart option:selected').text();
                 var end_title = $('#xend option:selected').text();
-				var third_kpi = $('#third_kpi option:selected').val();
-                var third_kpi_text = $('#third_kpi option:selected').text();
-			
+                var third_kpi = $('#third_kpi option:selected').val();
+                var table = $('#table_name option:selected').val();
+                
+			//if(chart.series[0] === undefined){
+                            
+                            while (chart.series.length > 0)
+                                chart.series[0].remove(true);
+                           
 				$('.companyList').each(function(i, selected) {
 				vals[i] = $(selected).val();
 				textvals[i] = $(selected).text();
-                                                               
+                                                                                               
 
-					if (vals[i] == "samsung" && vals[i] == selected_samsung) {
-						$(document).ready(function() {
-							
-							var samsung_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-							var samsung_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
-							var samsung_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
+
+                                        var samsung_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
+					var samsung_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
+                                        var samsung_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
                                   
                            	$.getJSON(samsung_x, function(data_x) {
                                 $.getJSON(samsung_y, function(data_y) {
@@ -698,133 +631,35 @@
 												   samsung[s] = [x[s],y[s],z[s]];
 																																														 
 												}  
-												chart.addSeries({id: 'samsung', name: "Samsung Inc", data: samsung, type: 'bubble'});
+                                                                                                
+												chart.addSeries({id: 'samsung', name: company_name, data: samsung, type: 'bubble'});
+
+                                                                                                var kpi = "getChartData.php?chart=All&modeID=quarter&company="+company_name;
+                                                                                                
+                                                                                                
+                                    
+                                $.getJSON(kpi, function(data) {
+                                    var list1 = [];
+                                   
+                                                for (var i in data)
+                                                {
+                                                    var Quarter = data[i].data;
+                                                    
+                                                    
+                                                }
+                                            });
+                                
+                                
+								chart.yAxis[0].setTitle({text: list});
+								chart.xAxis[0].setTitle({text: title});
+								chart.tooltip.options.formatter = function(){return  '<b>' + this.series.name +'</b><br><br/>'+list_text+':' + this.point.y +'<br/>'+title_text+':'+ this.point.x+'<br/>'+third_kpi_text+':'+ this.point.z};
+	          
                                     });
                                 });
 							}); 
-						});
-					}
-
-					if (vals[i] == "apple" && vals[i] == selected_apple) {
-						$(document).ready(function() {
-							
-							var apple_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-							var apple_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
-							var apple_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
-							
-							$.getJSON(apple_x, function(data_x) {
-                                $.getJSON(apple_y, function(data_y) {
-                                    $.getJSON(apple_z, function(data_z) {
-										
-									for (var i in data_x)
-									{
-									var value_x = data_x[i].data;
-									}
-										for (var i in data_y)
-										{
-										var value_y = data_y[i].data;
-										}           
-											for (var i in data_z)
-											{
-											var value_z = data_z[i].data;
-											}
-												var y = value_y, x = value_x, z = value_z;
-												var apple = [];
-
-												for (var s = 0; s < x.length; s++) {
-													
-												   apple[s] = [x[s],y[s],z[s]];
-																																														 
-												}  
-												chart.addSeries({id: 'apple', name: "Apple Inc", data: apple, type: 'bubble'});
-                                    });
-                                });
-							});
-
-						});
-					}
-
-					if (vals[i] == "htc" && vals[i] == selected_htc) {
-						$(document).ready(function() {
-						
-								var htc_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-								var htc_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
-								var htc_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
-							
-							$.getJSON(htc_x, function(data_x) {
-                                $.getJSON(htc_y, function(data_y) {
-                                    $.getJSON(htc_z, function(data_z) {
-										
-									for (var i in data_x)
-									{
-									var value_x = data_x[i].data;
-									}
-										for (var i in data_y)
-										{
-										var value_y = data_y[i].data;
-										}           
-											for (var i in data_z)
-											{
-											var value_z = data_z[i].data;
-											}
-												var y = value_y, x = value_x, z = value_z;
-												var htc = [];
-
-												for (var s = 0; s < x.length; s++) {
-													
-												   htc[s] = [x[s],y[s],z[s]];
-																																														 
-												}  
-												chart.addSeries({id: 'htc', name: "HTC Corp", data: htc, type: 'bubble'});
-                                    });
-                                });
-							});
-
-						});
-					}
-
-					if (vals[i] == "sony" && vals[i] == selected_sony) {
-						$(document).ready(function() {
-									
-							var sony_x = "getChartData.php?chart=All&modeID="+title+"&company="+company_name;
-							var sony_y = "getChartData.php?chart=All&modeID="+list+"&company="+company_name;
-							var sony_z = "getChartData.php?chart=All&modeID="+third_kpi+"&company="+company_name;
-						
-							$.getJSON(sony_x, function(data_x) {
-                                $.getJSON(sony_y, function(data_y) {
-                                    $.getJSON(sony_z, function(data_z) {
-										
-									for (var i in data_x)
-									{
-									var value_x = data_x[i].data;
-									}
-										for (var i in data_y)
-										{
-										var value_y = data_y[i].data;
-										}           
-											for (var i in data_z)
-											{
-											var value_z = data_z[i].data;
-											}
-												var y = value_y, x = value_x, z = value_z;
-												var sony = [];
-
-												for (var s = 0; s < x.length; s++) {
-													
-												   sony[s] = [x[s],y[s],z[s]];
-																																														 
-												}  
-												chart.addSeries({id: 'sony', name: "Sony Corp", data: sony, type: 'bubble'});
-                                    });
-                                });
-							});
-
-						});
-					}
-					
-					chart.setTitle({text:  " Correlation between " + list_text + ", " + title_text + " and " + third_kpi_text});
-					
-				 });	
+                        	
+				 });
+                                 
                                                                      
             };
 			
@@ -899,53 +734,64 @@
             };
 
             $(function() {
-                var sel, i,
-                        Year = ['2009','2010','2011', '2012', '2013', '2014'],
-                        start = ['0', '1', '2', '3','4','5'],
-                        end = ['1', '2', '3', '4','5','6'],
-                        Quarter = ['Q1 2011', 'Q2 2011', 'Q3 2011', 'Q4 2011', 'Q1 2012', 'Q2 2012'],
-                        dev_default = '<option value="default" selected>Select</option>';
 
-                sel_brand = $('#xstart');
-                sel_version = $('#xend');
+                    var dev_default = '<option value="default" selected>Select</option>';
                 
+                 
+
+                sel_brand = $('#combo');
+                sel_main = $('#main_list');
+                sel_version = $('#third_kpi');                                            
                 
                 $('select').change(function() {
                     switch (this.id) {
-                        case 'main_list':
+                        case 'table_name':
                             $('.secondary').hide();
                             sel_brand.find('option').remove();
                             sel_brand.append(dev_default);
                             sel_brand.show();
-                            $('.firstly').hide();
+                            $('.thirdly').hide();
                             sel_version.find('option').remove();
                             sel_version.append(dev_default);
                             sel_version.show();
-                            if (this.value == 'Year') {
-                                for (i = 0; i < Year.length; i++) {
-                                    $("#xstart").append(
-                                            '<option value="' + start[i] + '">' + Year[i] + '</option>'
+                            $('.firstly').hide();
+                            sel_main.find('option').remove();
+                            sel_main.append(dev_default);
+                            sel_main.show();
+                            
+                            var table = $('#table_name option:selected').val();
+                 
+                            var samsung = "getDropdownData.php?table="+table;
+                                                        
+							$.getJSON(samsung, function(data) {
+								var list = [];
+								//var endx = ++end;
+                                                                
+								for (var i in data)
+								{
+								
+								   var value = data[i].data;
+                                                                   								   
+								   }
+								 
+                                for (i = 0; i < value.length; i++) {
+                                    $("#combo").append(
+                                            '<option value="' + value[i] + '">' + value[i] + '</option>'
                                             ),
-                                            $("#xend").append(
-                                            '<option value="' + end[i] + '">' + Year[i] + '</option>'
+                                    $("#third_kpi").append(
+                                            '<option value="' + value[i] + '">' + value[i] + '</option>'
+                                            ),
+                                            $("#main_list").append(
+                                            '<option value="' + value[i] + '">' + value[i] + '</option>'
                                             );
                                 }
-                            } else if (this.value == 'Quarter') {
-                                for (i = 0; i < Quarter.length; i++) {
-                                    $("#xstart").append(
-                                            '<option value="' + start[i] + '">' + Quarter[i] + '</option>'
-                                            ),
-                                            $("#xend").append(
-                                            '<option value="' + end[i] + '">' + Quarter[i] + '</option>'
-                                            );
-                                }
-                            }
-                            break;
+                            });
+                                break;
 
                     }
                 });
 
-			}); 
+			});
 			
 		
         </script>
