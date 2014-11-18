@@ -288,7 +288,7 @@
 						<li>
                             <a href="view.php"><i class="fa fa-table fa-fw"></i> View Database</a>
                         </li>
-                         <li class="active">
+                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -332,10 +332,16 @@
                                     <a href="basic_area_chart.php">Basic Area Chart</a>
                                 </li>
                                 <li>
+                                    <a href="basic_bar_chart.php">Basic Bar Chart</a>
+                                </li>
+                                <li>
                                     <a href="basic_scatter_plot.php">Basic Scatter Plot</a>
                                 </li>
                                 <li>
-                                    <a href="basic_scatter_plot.php">Candlestick Chart</a>
+                                    <a href="basic_multivariable_graph.php">Basic Multi Variable Graph</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="basic_scatter_plot.php">Basic Candlestick Chart</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

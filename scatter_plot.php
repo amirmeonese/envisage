@@ -319,6 +319,34 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        <li class="active">
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Basic Chart<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="basic_timeline_plot.php">Basic Timeline Plot</a>
+                                </li>
+                                <li>
+                                    <a href="basic_column_chart.php">Basic Column Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_area_chart.php">Basic Area Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_bar_chart.php">Basic Bar Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Scatter Plot</a>
+                                </li>
+                                <li>
+                                    <a href="basic_multivariable_graph.php">Basic Multi Variable Graph</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Candlestick Chart</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
          
                     </ul>
                 </div>
@@ -348,7 +376,7 @@
 						<td height="100px" align="middle">
 						<?php 
 						include("DatabaseConnection.php");
-						$SQL1 = "SHOW COLUMNS FROM apple"; 
+						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='import'"; 
 						$Result = mysql_query($SQL1) or die(mysql_error());
 														
 						?> 
@@ -358,8 +386,8 @@
 							<?php 
 								while($row = mysql_fetch_array($Result))
 								{       
-									  echo "<option value=\"".$row["Field"]."\"";
-									  echo ">".$row["Field"]."</option>";        
+									  echo "<option value=\"".$row["column_name"]."\"";
+									  echo ">".$row["column_name"]."</option>";        
 								}  
 							?>
 							</select>

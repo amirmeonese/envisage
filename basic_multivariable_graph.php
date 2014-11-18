@@ -310,12 +310,40 @@
                                     <a href="scatter_plot.php">Scatter Plot</a>
                                 </li>
 								<li>
-                                    <a class="active" href="multivariable_graph.php">Multi Variable Graph</a>
+                                    <a href="multivariable_graph.php">Multi Variable Graph</a>
                                 </li>
 								<li>
                                     <a href="candlestick_chart.php">Candlestick Chart</a>
                                 </li>
                                 
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        <li class="active">
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Basic Chart<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="basic_timeline_plot.php">Basic Timeline Plot</a>
+                                </li>
+                                <li>
+                                    <a href="basic_column_chart.php">Basic Column Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_area_chart.php">Basic Area Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_bar_chart.php">Basic Bar Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Scatter Plot</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="basic_multivariable_graph.php">Basic Multi Variable Graph</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Candlestick Chart</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -330,7 +358,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Basic Scatter Plot</h1>
+                    <h1 class="page-header">Basic Multivariable Graph</h1>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div>

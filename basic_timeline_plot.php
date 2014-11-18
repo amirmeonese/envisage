@@ -323,11 +323,26 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> View Basic Chart<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="basic_timeline_plot.php">Basic Timeline Plot</a>
+                                    <a class="active" href="basic_timeline_plot.php">Basic Timeline Plot</a>
                                 </li>
                                 <li>
                                     <a href="basic_column_chart.php">Basic Column Chart</a>
-                                </li> 
+                                </li>
+                                <li>
+                                    <a href="basic_area_chart.php">Basic Area Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_bar_chart.php">Basic Bar Chart</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Scatter Plot</a>
+                                </li>
+                                <li>
+                                    <a href="basic_multivariable_graph.php">Basic Multi Variable Graph</a>
+                                </li>
+                                <li>
+                                    <a href="basic_scatter_plot.php">Basic Candlestick Chart</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
