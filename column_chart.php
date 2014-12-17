@@ -372,7 +372,7 @@
 					
 					<?php 
 						include("DatabaseConnection.php");
-						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='import'"; 
+						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='$dbname'"; 
 						$Result = mysql_query($SQL1) or die(mysql_error());
 														
 					?> 

@@ -376,7 +376,7 @@
 						<td height="100px" align="middle">
 						<?php 
 						include("DatabaseConnection.php");
-						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='import'"; 
+						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='$dbname'"; 
 						$Result = mysql_query($SQL1) or die(mysql_error());
 														
 						?> 
@@ -419,7 +419,7 @@
 						
 						<?php 
 						include("DatabaseConnection.php");
-						$SQL1 = "SHOW COLUMNS FROM apple"; 
+						$SQL1 = "SELECT distinct column_name FROM information_schema.columns WHERE TABLE_SCHEMA='$dbname'"; 
 						$Result = mysql_query($SQL1) or die(mysql_error());
 														
 						?> 
@@ -429,8 +429,8 @@
 							<?php 
 								while($row = mysql_fetch_array($Result))
 								{       
-									  echo "<option value=\"".$row["Field"]."\"";
-									  echo ">".$row["Field"]."</option>";        
+									  echo "<option value=\"".$row["column_name"]."\"";
+                                                                        echo ">".$row["column_name"]."</option>";         
 								}  
 							?>
 						</select>
